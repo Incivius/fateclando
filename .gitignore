@@ -1,0 +1,6 @@
+.vscode/
+.venv/
+
+.keys/myKeyPri.txt
+
+**/__pycache__
