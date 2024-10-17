@@ -1,18 +1,21 @@
 import rsa
 
-def cifrarMsg(arqnomepub, msg, arqnomemsg):
-    with open(arqnomepub, 'rb') as arq:
-        pub_key_data = arq.read()
+def cifrarMsg(arqnomepub, msg):
+    try:
+        # Abrir e ler a chave pública do arquivo
+        with open(arqnomepub, 'rb') as arq:
+            pub_key_data = arq.read()
 
-    # Decodifico para o formato expoente e modulo
-    pub = rsa.PublicKey.load_pkcs1(pub_key_data, format='PEM')
+        # Decodificar para o formato de chave pública
+        pub = rsa.PublicKey.load_pkcs1(pub_key_data, format='PEM')
 
-    # Cifro a msg
-    msgc = rsa.encrypt(msg.encode('utf-8'), pub)
+        # Cifrar a mensagem
+        msgc = rsa.encrypt(msg.encode('utf-8'), pub)
 
-    # Salvo a msg cifrada no arquivo
-    with open(arqnomemsg, 'wb') as arq:
-        arq.write(msgc)
+        print(f'Mensagem: {msgc}')
 
-    print(f'Mensagem cifrada salva no arquivo: {arqnomemsg}')
-    return msgc
+        # Retornar a mensagem cifrada
+        return msgc
+    except Exception as e:
+        print(f"Erro ao cifrar a mensagem: {e}")
+        return None

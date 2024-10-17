@@ -5,6 +5,7 @@ import socket
 from threading import Thread
 from security.cifrarMsg import cifrarMsg
 
+
 global tcp_con
 
 def enviar():
@@ -13,14 +14,13 @@ def enviar():
     while True:
         msg = cifrarMsg(
             arqnomepub='keys/myKeyPub.txt',
-            msg=msg,
-            arqnomemsg='messages/mensagemCifrada.txt'
+            msg=msg
         )
         tcp_con.send(msg)
         msg = input()
 
 # Endereco IP do Servidor
-HOST = os.getenv('HOST')
+HOST = ''
 
 # Porta que o Servidor vai escutar
 PORT = 5003
