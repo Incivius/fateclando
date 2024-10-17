@@ -20,7 +20,7 @@ def enviar():
         msg = input()
 
 # Endereco IP do Servidor
-HOST = ''
+HOST = os.getenv('HOST')
 
 # Porta que o Servidor vai escutar
 PORT = 5003

@@ -30,7 +30,7 @@ def client(pri, pub):
         tcp_con.close()
 
     # Endereco IP do Servidor
-    SERVER = '192.168.56.1'
+    SERVER = os.getenv('HOST')
     # Porta que o Servidor esta escutando
     PORT = 5003
 
