@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import socket
 from threading import Thread
 from security.cifrarMsg import cifrarMsg
-
+from security.decifrarMsg import decifrarMsg
 
 global tcp_con
 
@@ -37,6 +37,10 @@ while True:
     t_env.start()
     while True:
         msg = tcp_con.recv(1024)
+        msg = decifrarMsg(
+            arqnomepri='keys/myKeyPri.txt',
+            msg=msg
+        )
         if not msg: break
         print("Cliente:",msg)
     print ('Finalizando conexao do cliente', cliente)
