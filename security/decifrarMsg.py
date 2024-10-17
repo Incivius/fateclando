@@ -1,17 +1,14 @@
 import rsa
 
-def decifrarMsg(arqnomepri, arqnomemsg):
+def decifrarMsg(arqnomepri, msgc):
+    # Carregar a chave privada a partir do arquivo
     with open(arqnomepri, 'rb') as arq:
         pri_key_data = arq.read()
 
-    # Decodifico para o formato expoente e modulo
+    # Decodificar a chave privada
     pri = rsa.PrivateKey.load_pkcs1(pri_key_data, format='PEM')
 
-    # Abro o arquivo com a msg cifrada
-    with open(arqnomemsg, 'rb') as arq:
-        msgc = arq.read()
-
-    # Decifro a msg
+    # Decifrar a mensagem cifrada recebida (em formato de bytes)
     msg = rsa.decrypt(msgc, pri).decode('utf-8')
 
     print(f'Mensagem decifrada: {msg}')
