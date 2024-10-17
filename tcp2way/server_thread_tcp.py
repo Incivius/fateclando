@@ -1,6 +1,9 @@
 #Servidor TCP
+import os
+from dotenv import load_dotenv
 import socket
 from threading import Thread
+from security.cifrarMsg import cifrarMsg
 
 global tcp_con
 
@@ -8,11 +11,16 @@ def enviar():
     global tcp_con
     msg = input()
     while True:
-        tcp_con.send(msg.encode())
+        msg = cifrarMsg(
+            arqnomepub='keys/myKeyPub.txt',
+            msg=msg,
+            arqnomemsg='messages/mensagemCifrada.txt'
+        )
+        tcp_con.send(msg)
         msg = input()
 
 # Endereco IP do Servidor
-HOST = '192.168.56.1'
+HOST = os.getenv('HOST')
 
 # Porta que o Servidor vai escutar
 PORT = 5003
