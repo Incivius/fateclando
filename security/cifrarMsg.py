@@ -12,8 +12,6 @@ def cifrarMsg(arqnomepub, msg):
         # Cifrar a mensagem
         msgc = rsa.encrypt(msg.encode('utf-8'), pub)
 
-        print(f'Mensagem: {msgc}')
-
         # Retornar a mensagem cifrada
         return msgc
     except Exception as e:

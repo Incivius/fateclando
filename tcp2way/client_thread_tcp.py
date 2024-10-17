@@ -6,6 +6,9 @@ from threading import Thread
 from security.decifrarMsg import decifrarMsg
 from security.cifrarMsg import cifrarMsg
 
+
+load_dotenv()
+
 def client(pri, pub):
     global tcp_con
     
@@ -14,14 +17,12 @@ def client(pri, pub):
         while True:
             msg = tcp_con.recv(1050)
             msg = decifrarMsg(pri, msg)
-            print ("Server:", msg)
-
+            print('server:', msg)
     def enviar():
         global tcp_con
         print('Para sair use CTRL+X\n')
         msg = input()
         msg = cifrarMsg(pub, msg)
-        print(f'Mensagem: {msg}')
         while msg != '\x18':
             # Remova o .encode(), já que msg já está em formato de bytes
             tcp_con.send(msg)

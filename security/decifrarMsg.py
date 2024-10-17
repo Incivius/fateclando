@@ -11,5 +11,4 @@ def decifrarMsg(arqnomepri, msgc):
     # Decifrar a mensagem cifrada recebida (em formato de bytes)
     msg = rsa.decrypt(msgc, pri).decode('utf-8')
 
-    print(f'Mensagem decifrada: {msg}')
     return msg

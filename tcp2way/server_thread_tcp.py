@@ -8,6 +8,8 @@ from security.decifrarMsg import decifrarMsg
 
 global tcp_con
 
+load_dotenv()
+
 def enviar():
     global tcp_con
     msg = input()
