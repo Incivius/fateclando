@@ -15,3 +15,4 @@ def cifrarMsg(arqnomepub, msg, arqnomemsg):
         arq.write(msgc)
 
     print(f'Mensagem cifrada salva no arquivo: {arqnomemsg}')
+    return msgc
