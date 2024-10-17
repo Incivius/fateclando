@@ -39,7 +39,7 @@ while True:
         msg = tcp_con.recv(1024)
         msg = decifrarMsg(
             arqnomepri='keys/myKeyPri.txt',
-            msg=msg
+            msgc=msg
         )
         if not msg: break
         print("Cliente:",msg)
