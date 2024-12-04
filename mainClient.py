@@ -10,7 +10,7 @@ def main():
     pub_key, pri_key = gerarChaves()
     print(f'Chaves geradas: \nPublic Key: {pub_key}\nPrivate Key: {pri_key}')
 
-    client(pri_key, pub_key )
+    client()
     
 if __name__ == '__main__':
     main()

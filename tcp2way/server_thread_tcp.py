@@ -1,6 +1,10 @@
 #Servidor TCP
 import os
+import sys
 from dotenv import load_dotenv
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
+
 import socket
 from threading import Thread
 from security.cifrarMsg import cifrarMsg
@@ -22,7 +26,7 @@ def enviar():
         msg = input()
 
 # Endereco IP do Servidor
-HOST = os.getenv('HOST')
+HOST = ''
 
 # Porta que o Servidor vai escutar
 PORT = 5003
